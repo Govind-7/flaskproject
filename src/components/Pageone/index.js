@@ -15,7 +15,23 @@ const Pageone=()=>
         setName('')
         setText('')
 
-        const response=await fetch('http://localhost:5000/pro')
+        const dat={
+            name,
+            age,gender,text
+        }
+
+        const options={
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'Accept':'application/json'
+            }
+            ,
+            body:JSON.stringify(dat)
+        }
+
+        const response=await fetch('http://localhost:5000/posting',options)
+
         const data=await response.json()
         console.log(data)
        

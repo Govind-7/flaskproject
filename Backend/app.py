@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 app=Flask(__name__)
@@ -19,3 +19,15 @@ def get_pro():
     fetchdata=cur.fetchall()
     cur.close()
     return {'goin':'hello world','dt':fetchdata}
+
+@app.post('/posting')
+def posting_data():
+    data=request.get_json()
+    print(data)
+    cur=mysql.connection.cursor()
+    query = 'INSERT INTO userdetails (name, age, gender, summery) VALUES (%s, %s, %s, %s)'
+    cur.execute(query, (data['name'], data['age'], data['gender'], data['text']))
+    mysql.connection.commit()  
+    cur.close()
+
+    return{'dt':'sucess'}
