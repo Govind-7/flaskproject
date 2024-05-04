@@ -8,12 +8,16 @@ const Pageone=()=>
     const[text,setText]=useState('')
     const [gender,setGender]=useState('')
     
-    const submitFunc=(e)=>{
+    const submitFunc=async(e)=>{
         e.preventDefault()
         console.log(name,age,text,gender)
         setAge('')
         setName('')
         setText('')
+
+        const response=await fetch('http://localhost:5000/pro')
+        const data=await response.json()
+        console.log(data)
        
         
     }
