@@ -15,6 +15,8 @@ mysql=MySQL(app)
 @app.get('/pro')
 def get_pro():
     cur=mysql.connection.cursor()
+    ip=request.remote_addr
+    print("customize -add",ip)
     cur.execute('SELECT * FROM userdetails')
     fetchdata=cur.fetchall()
     cur.close()
@@ -23,7 +25,7 @@ def get_pro():
 @app.post('/posting')
 def posting_data():
     data=request.get_json()
-    print(data)
+    
     cur=mysql.connection.cursor()
     query = 'INSERT INTO userdetails (name, age, gender, summery) VALUES (%s, %s, %s, %s)'
     cur.execute(query, (data['name'], data['age'], data['gender'], data['text']))

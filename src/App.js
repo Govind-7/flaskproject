@@ -1,14 +1,31 @@
 
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Pageone  from './components/Pageone';
+import ExistngData from './components/ExistngData'
+import Notfound from './components/Notfound'
+
 
 function App() {
-  return (
-    <div className="App">
-      
-      <Pageone/>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Pageone />,
+    },
+
+    {
+      path: "/data",
+      element: <ExistngData />,
+    },
+    {
+      path:'*',
+      element:<Notfound/>
+    }
+    
+    
+  ]);
+  
+    return <RouterProvider router={router} />;
+
 
 }
 
