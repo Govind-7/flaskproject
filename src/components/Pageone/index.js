@@ -32,6 +32,12 @@ const Pageone=()=>
 
     }
 
+    const clearFun=()=>{
+        setAge('')
+        setName('')
+        setText('')
+    }
+
 
 
 
@@ -52,7 +58,7 @@ return (
         <textarea value={text} onChange={(e)=>{setText(e.target.value)}} required cols={20} rows={10}/>
         <br/>
         <button type="submit"> submit</button>
-       
+       <button onClick={clearFun}>Clear form</button>
         
     </form>
     
