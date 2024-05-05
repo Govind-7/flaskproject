@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,abort
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 app=Flask(__name__)
@@ -43,11 +43,12 @@ def posting_data():
 
             return{'dt':'sucess'}
         else:
-            return{'dt':'please provide all details'}
+            abort (400, 'Bad Request')
+        
 
     except:
         print('db errr')
-        return{'dt':'db error'}
+        abort (500, 'DB error')
 @app.get('/clientIp')
 def clientIpaddress():
     try:
@@ -63,7 +64,7 @@ def clientIpaddress():
             return {'dt':False}
         return {'dt':True}
     except:
-        return {'dt':'db error'}
+        abort (500, 'DB error')
 
 
 
