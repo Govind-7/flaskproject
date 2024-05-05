@@ -1,4 +1,5 @@
 import {useState} from 'react'
+// import { Link } from 'react-router-dom'
 import './index.css'
 
 const Pageone=()=>
@@ -76,6 +77,7 @@ return (
 
     <form className='page1-bg' onSubmit={submitFunc}>
         <h1>Indian Survey Form</h1>
+        {/* <Link to='/data'>Data page</Link><br/> */}
         <input className='user-input' value={name} onChange={(e)=>{setName(e.target.value)}} required type="text" placeholder="Enter Your Name"/>
         <br/>
         <input className='user-input' value={age} onChange={(e)=>{ageFunction(e.target.value)}}  required type="number" placeholder="Enter your AGE"/>

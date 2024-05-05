@@ -22,3 +22,10 @@
     border-width: 1px;
     margin-right: 8px;
 }
+.next-but:hover{
+    color: red;
+    border-color: red;
+}
+.not-found{
+    text-align: center;
+}

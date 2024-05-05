@@ -1,4 +1,5 @@
-import { useEffect,useState } from "react"
+import { useEffect,useState } from "react";
+
 
 import './index.css'
 
@@ -31,6 +32,7 @@ const ExistngData=()=>{
     return(
         <div className="data-bg">
             <h1>Enrolled User Data</h1>
+            
             {
                 data.map(item=><div className="user-card">
                     <p><b>Name :</b>{item[0]}</p>
