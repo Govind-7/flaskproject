@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import './index.css'
 
 const Pageone=()=>
 {
@@ -73,21 +74,23 @@ const Pageone=()=>
 return (
 
 
-    <form onSubmit={submitFunc}>
-        <input value={name} onChange={(e)=>{setName(e.target.value)}} required type="text" placeholder="Enter Your Name"/>
+    <form className='page1-bg' onSubmit={submitFunc}>
+        <h1>Indian Survey Form</h1>
+        <input className='user-input' value={name} onChange={(e)=>{setName(e.target.value)}} required type="text" placeholder="Enter Your Name"/>
         <br/>
-        <input value={age} onChange={(e)=>{ageFunction(e.target.value)}}  required type="number" placeholder="Enter your AGE"/>
+        <input className='user-input' value={age} onChange={(e)=>{ageFunction(e.target.value)}}  required type="number" placeholder="Enter your AGE"/>
         <br/>
-        {er&&<p>{er}</p>}
+        {er&&<p className='err-msg'>{er}</p>}
         <input required value='male' onChange={(e)=>{setGender(e.target.value)}} id='male' name="group"  type="radio" />
         <label for='male'>Male</label>
         <input required value='female' onChange={(e)=>{setGender(e.target.value)}} type="radio" name="group"  id="female" />
         <label for='female'>female</label>
         <br/>
-        <textarea value={text} onChange={(e)=>{setText(e.target.value)}} required cols={20} rows={10}/>
+        <textarea placeholder=' Add Description here ........' value={text} onChange={(e)=>{setText(e.target.value)}} required cols={20} rows={10}/>
         <br/>
-        <button type="submit"> submit</button>
-       <button onClick={clearFun}>Clear form</button>
+        
+        <button className='sub-but' type="submit">Submit</button>
+       <button className='sub-but' onClick={clearFun}>Clear</button>
         
     </form>
     

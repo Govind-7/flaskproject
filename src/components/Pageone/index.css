@@ -1,0 +1,61 @@
+.page1-bg{
+    background-image: linear-gradient(45deg,skyblue,white, pink,white,lightblue);
+    height: 100vh;
+    padding: 10px;
+
+}
+.user-input{
+    width: 80%;
+    height: 8%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-style: none;
+    padding-left: 15px;
+    
+}
+textarea{
+    width: 80%;
+    border-style: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+
+
+@media (orientation:landscape){
+    .sub-but{
+        height: 7%;
+        width: 15%;
+        margin-left: 10px;
+        background-color:rgb(28, 179, 239);
+        color: white;
+        border-style: none;
+        border-radius: 10px;
+        margin-left: 190px;
+    }
+    
+
+}
+
+@media (orientation:portrait){
+    .sub-but{
+        height: 4%;
+        width: 20%;
+        margin-left: 10px;
+        background-color:rgb(28, 179, 239);
+        color: white;
+        border-style: none;
+        border-radius: 10px;
+        margin-left: 50px;
+    
+    }
+
+}
+.sub-but:hover{
+    color: red;
+}
+
+.err-msg{
+    color: red;
+}

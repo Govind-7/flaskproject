@@ -14,17 +14,22 @@ mysql=MySQL(app)
 
 @app.get('/pro')
 def get_pro():
+    param1 = int(request.args.get('offset')) 
+    # if request.args.get('offset') == None else 0
+    print("offset",param1)
     try:
         cur=mysql.connection.cursor()    
-        cur.execute('SELECT * FROM userdetails')
+        query='SELECT * FROM userdetails limit %s offset %s'
+        cur.execute(query,(2,param1))
         fetchdata=cur.fetchall()
         cur.close()
+        # print(fetchdata)
         return {'dt':fetchdata}
 
     
     except :
         print('db error')
-        return{'dt':'db error'}
+        abort (500, 'Bad Request')
 
     
    
