@@ -10,7 +10,12 @@ const Pageone=()=>
     
     const submitFunc=async(e)=>{
         e.preventDefault()
-        console.log(name,age,text,gender)
+        const ipresponse=await fetch('http://localhost:5000/clientIp')
+        const respo=await ipresponse.json()
+        console.log()
+        if(respo.dt){
+
+      
         setAge('')
         setName('')
         setText('')
@@ -33,7 +38,11 @@ const Pageone=()=>
         const response=await fetch('http://localhost:5000/posting',options)
 
         const data=await response.json()
-        console.log(data)
+        alert("data submitted ",data)
+    }
+    else{
+        alert('By using this machine data already submitted')
+    }
        
         
     }

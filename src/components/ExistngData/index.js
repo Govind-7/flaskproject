@@ -20,10 +20,10 @@ const ExistngData=()=>{
             <p>existing data</p>
             {
                 data.map(item=><div>
-                    <p>Name :{item[0]}</p>
-                    <p> Age : {item[1]}</p>
-                    <p>Gender : {item[2]}</p>
-                    <p>Discription: {item[3]}</p>
+                    <p><b>Name :</b>{item[0]}</p>
+                    <p> <b>Age :</b>  {item[1]}</p>
+                    <p> <b>Gender :</b> {item[2]}</p>
+                    <p><b>Discription :</b> {item[3]}</p>
                     </div>)
 
             }

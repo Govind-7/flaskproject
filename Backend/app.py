@@ -14,22 +14,57 @@ mysql=MySQL(app)
 
 @app.get('/pro')
 def get_pro():
-    cur=mysql.connection.cursor()
-    ip=request.remote_addr
-    print("customize -add",ip)
-    cur.execute('SELECT * FROM userdetails')
-    fetchdata=cur.fetchall()
-    cur.close()
-    return {'goin':'hello world','dt':fetchdata}
+    try:
+        cur=mysql.connection.cursor()    
+        cur.execute('SELECT * FROM userdetails')
+        fetchdata=cur.fetchall()
+        cur.close()
+        return {'dt':fetchdata}
+
+    
+    except :
+        print('db error')
+        return{'dt':'db error'}
+
+    
+   
 
 @app.post('/posting')
 def posting_data():
-    data=request.get_json()
-    
-    cur=mysql.connection.cursor()
-    query = 'INSERT INTO userdetails (name, age, gender, summery) VALUES (%s, %s, %s, %s)'
-    cur.execute(query, (data['name'], data['age'], data['gender'], data['text']))
-    mysql.connection.commit()  
-    cur.close()
+    try:
+        data=request.get_json()
+        if (data.get('name')!="" and data.get('age')!="" and data.get('gender')!="" and data.get('text')!=""):
+            ip=request.remote_addr
+            cur=mysql.connection.cursor()
+            query = 'INSERT INTO userdetails (name, age, gender, summery,ipaddress) VALUES (%s, %s, %s, %s,%s)'
+            cur.execute(query, (data['name'], data['age'], data['gender'], data['text'],ip))
+            mysql.connection.commit()  
+            cur.close()
 
-    return{'dt':'sucess'}
+            return{'dt':'sucess'}
+        else:
+            return{'dt':'please provide all details'}
+
+    except:
+        print('db errr')
+        return{'dt':'db error'}
+@app.get('/clientIp')
+def clientIpaddress():
+    try:
+        ip=str(request.remote_addr)
+        cur=mysql.connection.cursor()
+
+        query='SELECT * FROM userdetails WHERE ipaddress=%s'
+        cur.execute(query,(ip,))
+        fetchdata=cur.fetchall()
+        cur.close()
+   
+        if len(fetchdata)>0:
+            return {'dt':False}
+        return {'dt':True}
+    except:
+        return {'dt':'db error'}
+
+
+
+
